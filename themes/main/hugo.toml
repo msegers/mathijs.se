@@ -1,0 +1,24 @@
+baseURL = 'https://mathijs.se/'
+languageCode = 'en-US'
+title = 'Mathijs Segers'
+
+[menus]
+  [[menus.main]]
+    name = 'About'
+    pageRef = '/'
+    weight = 10
+
+  [[menus.main]]
+    name = 'Blog'
+    pageRef = '/blog'
+    weight = 20
+
+  [[menus.main]]
+    name = 'Tags'
+    pageRef = '/tags'
+    weight = 30
+
+[module]
+  [module.hugoVersion]
+    extended = false
+    min = '0.146.0'
