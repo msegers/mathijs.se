@@ -8,8 +8,10 @@
     {{ else }}
       {{ $image = "/assets/blog-post-no-image.png" }}
     {{ end }}
-      <img src="{{ $image }}" alt="{{.Params.image.alt}}"  />
+    <section>
       <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
-    {{ .Summary }}
+      <img src="{{ $image }}" alt="{{.Params.image.alt}}"  />
+      {{ .Summary }}
+    </section>
   {{ end }}
 {{ end }}
