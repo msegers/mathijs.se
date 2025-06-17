@@ -1,0 +1,134 @@
+@font-face {
+  font-family: CothamSans;
+  src: url("/CothamSans.otf") format("opentype");
+}
+
+@font-face {
+  font-family: CothamSans;
+  font-weight: bold;
+  src: url("/CothamSans.otf") format("opentype");
+}
+
+:root {
+  --platinum: #DEE5E5;
+  --licorice: #2E282A;
+  --mikado-yellow: #FFC60A;
+  --kelly-green: #76B041;
+  --madder: #A41623;
+  --sunset: #FFD29D;
+  --delft-blauw: #454B66;
+  --raisin-black: #181B25;
+  --caramel: #E18335;
+  --foreground: var(--platinum);
+  --background: var(--raisin-black);
+  --primary: var(--mikado-yellow);
+  --secondary: var(--caramel);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+}
+
+html,
+body {
+  margin: 0;
+  width: 100vw;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: "Inter", sans-serif;
+  line-height: 1.5;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+}
+
+header,
+main,
+footer {
+  max-width: 780px;
+  width: 100%;
+  margin: auto;
+}
+
+main {
+  flex-grow: 1;
+}
+
+h1,
+h2,
+h3 {
+  font-family: CothamSans, sans-serif;
+  color: var(--foreground);
+}
+
+h1 {
+  font-size: 3rem;
+  line-height: 1.5;
+}
+
+header {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-auto-rows: 1fr;
+  gap: 1rem;
+  flex-direction: row;
+  align-items: center;
+  padding: 2rem 0;
+}
+
+header>a {
+  grid-column: span 3;
+}
+
+header h1 {
+  color: var(--primary);
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+header h1 span {
+  color: var(--foreground);
+}
+
+header nav {
+  grid-column: span 6;
+  display: flex;
+  justify-content: center;
+}
+
+header nav ul {
+  margin: 0;
+}
+
+header nav li {
+  display: inline-block;
+  padding: 0 0.5rem;
+}
+
+header nav li a {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--foreground);
+}
+
+header nav li a.active {
+  color: var(--primary);
+}
+
+footer {
+  border-top: 1px solid #222;
+  margin-top: 1rem;
+}
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+}

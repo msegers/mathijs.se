@@ -6,8 +6,6 @@ tags = ['development', 'vim', 'linux', 'ramble']
 image = { src =  'neovim-hello-world.png', alt= 'A screenshot of my NeoVim editor in Kitty terminal'}
 +++
 
-## Purpose of this journal
-
 Today marks the first day of me working on a blog for self learning.
 The purpose of this blog is to create a journal of learning or knowledge sharing,
 likely for a very specific target audience or just for myself.

@@ -2,11 +2,14 @@
   <h1>{{ .Title }}</h1>
   {{ .Content }}
   {{ range .Pages }}
-    {{ $image := printf "%s%s" .RelPermalink .Params.image.src }}
-      {{ if $image }}
+    {{ $image := "" }}
+    {{ if .Params.image.src }}
+      {{ $image = printf "%s%s" .RelPermalink .Params.image.src }}
+    {{ else }}
+      {{ $image = "/assets/blog-post-no-image.png" }}
+    {{ end }}
       <img src="{{ $image }}" alt="{{.Params.image.alt}}"  />
-      {{ end }}
-    <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
+      <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
     {{ .Summary }}
   {{ end }}
 {{ end }}

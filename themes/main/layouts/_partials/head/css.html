@@ -1,8 +1,10 @@
-{{- with resources.Get "css/main.css" }}
+{{- with resources.Get "css/main.scss" }}
   {{- if hugo.IsDevelopment }}
+    {{- with . | css.Sass  }}
     <link rel="stylesheet" href="{{ .RelPermalink }}">
+    {{- end }}
   {{- else }}
-    {{- with . | minify | fingerprint }}
+    {{- with . | css.Sass | minify | fingerprint }}
       <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
     {{- end }}
   {{- end }}
