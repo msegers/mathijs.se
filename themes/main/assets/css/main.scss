@@ -61,7 +61,7 @@ body {
 header,
 main,
 footer > section {
-  max-width: 820px;
+  max-width: 1200px;
   width: 100%;
   margin: 0 auto;
   padding: 0 1.5rem;
@@ -147,6 +147,11 @@ main {
     line-height: 1.2;
   }
 
+  time {
+    display: block;
+    font-size: 1em;
+  }
+
   section {
     &.articles {
       display: grid;
@@ -165,6 +170,11 @@ main {
         flex-direction: column;
         gap: 0.5rem;
 
+        img {
+          aspect-ratio: 16 / 9;
+          object-fit: cover;
+        }
+
         .tag-list {
           display: flex;
           flex-direction: row;
@@ -179,11 +189,6 @@ main {
             margin: 0.25rem 0 0 0;
             text-decoration: none;
           }
-        }
-
-        time {
-          display: block;
-          font-size: 1em;
         }
 
         div {
@@ -206,9 +211,8 @@ main {
             text-shadow: #000 0 0 4px;
           }
 
-          img {
-            aspect-ratio: 16 / 9;
-            object-fit: cover;
+          p {
+            margin: 0.25rem 0;
           }
         }
       }
@@ -216,10 +220,6 @@ main {
 
     h2 {
       margin: 0 0 0.5rem 0;
-    }
-
-    p {
-      margin: 0.25rem 0;
     }
 
     p,

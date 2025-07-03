@@ -1,13 +1,15 @@
 +++
 title = 'print("Hello World")'
 date = 2025-06-13T09:00:00+01:00
-tags = ['development', 'vim', 'linux', 'ramble']
+tags = ['ramble', 'vim']
 image = { src =  'neovim-hello-world.png', alt= 'A screenshot of my NeoVim editor in Kitty terminal'}
+summary = "Why I started a blog."
 +++
 
-Today I started working on my blog, the intent is to share some learnings.
+Today I started work on my blog, 
+the post you're reading has been written before the website is published.
+I created this website so I could record my learnings more publicly,
 
-Eventually have an interactive CV here as well which should make it easier to track experience.
 I never liked sharing my opinion because of permanent Imposter Syndrome, but it is also a great way to reflect at times plus, it's kind of a fun pastime for me.
 For this blog I have started using [Hugo](https://github.com/gohugo/hugo), which is a Go build static page generator.
 

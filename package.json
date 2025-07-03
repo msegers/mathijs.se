@@ -1,1 +1,16 @@
-{"name":"mathijs.se","version":"1.0.0","description":"Just dependencies for formatting","repository":{"type":"git","url":"git+https://github.com/msegers/mathijs.se.git"},"author":"mathijssegers@gmail.com","license":"ISC","dependencies":{"prettier":"^3.6.2","prettier-plugin-go-template":"^0.0.15"}}
+{
+  "name": "mathijs.se",
+  "version": "1.0.0",
+  "description": "Just dependencies for formatting",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/msegers/mathijs.se.git"
+  },
+  "author": "mathijssegers@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "prettier": "^3.6.2",
+    "prettier-plugin-go-template": "^0.0.15"
+  }
+}
+

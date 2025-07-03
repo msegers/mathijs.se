@@ -32,9 +32,9 @@
           {{ end }}
         </div>
 
-        <time datetime="{{ .Params.date }}">
-          {{ .Params.date.Format .Site.Params.dateFormat }}
-        </time>
+        {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
+        {{ $dateHuman := .Date | time.Format ":date_long" }}
+        <time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time>
 
         <h2>{{ .LinkTitle }}</h2>
 
