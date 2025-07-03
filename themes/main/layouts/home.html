@@ -1,8 +1,6 @@
 {{ define "main" }}
-  <h1>Hi, I am Mathijs<br/>I write code and bugs</h1>
-  {{ .Content }}
-  {{ range site.RegularPages }}
-    <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
-    {{ .Summary }}
-  {{ end }}
+  <h1>Hi, I am Mathijs<br />I write code and bugs</h1>
+  <section>
+    {{ .Content }}
+  </section>
 {{ end }}

@@ -5,4 +5,4 @@ draft = false
 layout = 'about'
 +++
 
-I don't have time to about yet
+I don't have time to about yet.

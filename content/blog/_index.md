@@ -1,7 +1,9 @@
 +++
-title = 'Blog'
+title = 'My ramblings'
 date = 2025-06-13T08:30:00+01:00
 draft = false
 +++
 
-The posts here serve as both a journal and potential knowledge sharing. And allow me to keep track of my activities, and perhaps achievements.
+My ramblings, I generally write these in NeoVim without any spellchecks,
+so let me know if you see some terrible typo's; 
+or just think my opinions or ideas are incorrect.

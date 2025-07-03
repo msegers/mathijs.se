@@ -2,6 +2,9 @@ baseURL = 'https://mathijs.se/'
 languageCode = 'en-US'
 title = 'Mathijs Segers'
 
+[Params]
+dateFormat = "January 1, 2006"
+
 [menus]
   [[menus.main]]
     name = 'About'

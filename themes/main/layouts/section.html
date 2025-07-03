@@ -1,17 +1,48 @@
 {{ define "main" }}
   <h1>{{ .Title }}</h1>
   {{ .Content }}
-  {{ range .Pages }}
-    {{ $image := "" }}
-    {{ if .Params.image.src }}
-      {{ $image = printf "%s%s" .RelPermalink .Params.image.src }}
-    {{ else }}
-      {{ $image = "/assets/blog-post-no-image.png" }}
+
+
+  <section class="articles">
+    {{ range .Pages }}
+
+      {{ $image := "" }}
+      {{ $alt := "" }}
+      {{ $imageClassName := "" }}
+      {{ if .Params.image.src }}
+        {{ $image = printf "%s%s" .RelPermalink .Params.image.src }}
+        {{ $alt = .Params.image.alt }}
+      {{ else }}
+        {{ $image = "/blog-post-no-image.jpg" }}
+        {{ $alt = printf "%s%s" .LinkTitle " has no image" }}
+        {{ $imageClassName = "no-image" }}
+      {{ end }}
+
+
+      <article>
+        <div class="{{ $imageClassName }}">
+          <img src="{{ $image }}" alt="{{ $alt }}" />
+        </div>
+
+        <div class="tag-list">
+          {{ range .Params.tags }}
+            <a href="/tag/{{ . }}" class="tag">
+              {{ . | strings.FirstUpper }}
+            </a>
+          {{ end }}
+        </div>
+
+        <time datetime="{{ .Params.date }}">
+          {{ .Params.date.Format .Site.Params.dateFormat }}
+        </time>
+
+        <h2>{{ .LinkTitle }}</h2>
+
+        {{ .Summary }}
+
+
+        <a href="{{ .RelPermalink }}">Read more</a>
+      </article>
     {{ end }}
-    <section>
-      <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
-      <img src="{{ $image }}" alt="{{.Params.image.alt}}"  />
-      {{ .Summary }}
-    </section>
-  {{ end }}
+  </section>
 {{ end }}
