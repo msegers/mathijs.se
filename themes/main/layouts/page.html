@@ -7,6 +7,11 @@
 
   <section>
     {{ .Content }}
+
+    {{ if .Params.tags }}
+      <h3 class="tag-header">Related Tags</h3>
+    {{ end }}
+
+    {{ partial "terms.html" (dict "taxonomy" "tags" "page" .) }}
   </section>
-  {{ partial "terms.html" (dict "taxonomy" "tags" "page" .) }}
 {{ end }}

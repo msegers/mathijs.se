@@ -16,11 +16,6 @@ dateFormat = "January 1, 2006"
     pageRef = '/blog'
     weight = 20
 
-  [[menus.main]]
-    name = 'Tags'
-    pageRef = '/tags'
-    weight = 30
-
 [module]
   [module.hugoVersion]
     extended = false

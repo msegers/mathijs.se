@@ -2,7 +2,8 @@
 date = '2025-07-03T06:52:11+02:00'
 draft = true
 title = 'Mathmetics'
-tags = ['computer-science']
+summary = 'Educating myself on basic Math'
+tags = ['learning', 'computer-science']
 +++
 
 Learning Computer Science in my free time, part 1.
