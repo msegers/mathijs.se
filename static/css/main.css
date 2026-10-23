@@ -282,8 +282,6 @@ main section.post-list p {
 
 main section.post-list p {
   margin: 0.25rem 0 0;
-  max-height: 2.8em;
-  overflow: hidden;
 }
 
 @media (min-width: 768px) {
