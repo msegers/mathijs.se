@@ -259,6 +259,85 @@ main section .tag-list a.tag:hover {
   color: var(--primary-hover);
 }
 
+main section.term-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+
+main section.term-list a.term {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  padding: 0.55rem 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--primary);
+  font-size: 1.05rem;
+  text-decoration: none;
+}
+
+main section.term-list a.term:hover {
+  background: var(--surface-hover);
+  border-color: var(--primary);
+  color: var(--primary-hover);
+}
+
+main section.term-list .term-count {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+main section.post-list {
+  display: grid;
+  margin-top: 2rem;
+}
+
+main section.post-list article {
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--border);
+}
+
+main section.post-list article:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+main section.post-list h2 {
+  margin: 0 0 0.35rem;
+  font-size: 1.6rem;
+  line-height: 1.25;
+}
+
+main section.post-list h2 a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+main section.post-list h2 a:hover {
+  color: var(--primary-hover);
+}
+
+main section.post-list time {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+main section.post-list p {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  margin: 0.5rem 0 0;
+  color: var(--muted);
+}
+
+main section.post-list .tag-list {
+  margin-top: 0.75rem;
+}
+
 @media (min-width: 768px) {
   main section.articles {
     grid-template-columns: repeat(2, 1fr);

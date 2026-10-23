@@ -56,8 +56,9 @@ type frontMatter struct {
 
 // Link is a small rendered link used by the templates.
 type Link struct {
-	Name string
-	URL  string
+	Name  string
+	URL   string
+	Count int
 }
 
 // Page is a content file that will be turned into one HTML page.

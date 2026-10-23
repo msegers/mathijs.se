@@ -150,7 +150,7 @@ func (b *siteBuilder) Run() (int, error) {
 		terms := taxonomy.SortedTerms()
 		links := make([]Link, 0, len(terms))
 		for _, term := range terms {
-			links = append(links, Link{Name: term.Name, URL: term.URL})
+			links = append(links, Link{Name: term.Name, URL: term.URL, Count: len(term.Pages)})
 		}
 		if err := b.writePage(taxonomy.Route, "list", view{
 			Title:   taxonomy.Name + " | " + b.cfg.Title,
@@ -164,7 +164,7 @@ func (b *siteBuilder) Run() (int, error) {
 			if err := b.writePage(term.URL, "list", view{
 				Title:   term.Name + " | " + b.cfg.Title,
 				Heading: term.Name,
-				Links:   pageLinks(term.Pages),
+				Cards:   b.cardsForPages(term.Pages),
 			}); err != nil {
 				return 0, err
 			}
@@ -222,7 +222,10 @@ func (b *siteBuilder) nav(route string) []navItem {
 }
 
 func (b *siteBuilder) cardsFor(route string) []Card {
-	pages := b.pagesUnder(route)
+	return b.cardsForPages(b.pagesUnder(route))
+}
+
+func (b *siteBuilder) cardsForPages(pages []*Page) []Card {
 	sortPages(pages)
 
 	cards := make([]Card, 0, len(pages))
@@ -270,14 +273,6 @@ func resolveAsset(route, source string) string {
 		return source
 	}
 	return strings.TrimSuffix(route, "/") + "/" + source
-}
-
-func pageLinks(pages []*Page) []Link {
-	links := make([]Link, 0, len(pages))
-	for _, page := range pages {
-		links = append(links, Link{Name: page.Title, URL: page.Route})
-	}
-	return links
 }
 
 func (b *siteBuilder) absURL(route string) string {
