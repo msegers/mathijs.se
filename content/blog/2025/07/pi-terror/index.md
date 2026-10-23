@@ -57,7 +57,7 @@ I had a few simple things I wanted:
 
 Anyone who is familliar with Terraform will probably not agree on using it for such a tiny project,
 I am a beginner, but I'm also aware what I'm doing seems off, but it's a learning exercise and it seems to work well for this hobby setup.
-Anyways for those who just want to see the config files, check it out on [Github](https://github.com/msegers/terraform-pi)
+Anyways for those who just want to see the config files, check it out on [Github](https://github.com/msegers/homelab)
 
 
 First things first, to do anything on the PI early on we need access,
