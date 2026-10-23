@@ -3,12 +3,9 @@
   {{ .Body }}
 
   {{- if .Links }}
-  <section class="term-list">
+  <section class="tag-list">
     {{- range .Links }}
-    <a href="{{ .URL }}" class="term">
-      <span class="term-name">{{ .Name }}</span>
-      <span class="term-count">{{ .Count }} {{ if eq .Count 1 }}post{{ else }}posts{{ end }}</span>
-    </a>
+    <a href="{{ .URL }}" class="tag">{{ .Name }} <span class="term-count">{{ .Count }} {{ if eq .Count 1 }}post{{ else }}posts{{ end }}</span></a>
     {{- end }}
   </section>
   {{- else if .Cards }}
@@ -16,17 +13,11 @@
     {{- range .Cards }}
     <article>
       <h2><a href="{{ .URL }}">{{ .Title }}</a></h2>
-      {{- if .DateISO }}
-      <time datetime="{{ .DateISO }}">{{ .DateHuman }}</time>
-      {{- end }}
-      {{- if .Summary }}
-      <p>{{ .Summary }}</p>
-      {{- end }}
+      {{- if .DateISO }}<time datetime="{{ .DateISO }}">{{ .DateHuman }}</time>{{ end }}
+      {{- if .Summary }}<p>{{ .Summary }}</p>{{ end }}
       {{- if .Tags }}
       <div class="tag-list">
-        {{- range .Tags }}
-        <a href="{{ .URL }}" class="tag">{{ .Name }}</a>
-        {{- end }}
+        {{- range .Tags }}<a href="{{ .URL }}" class="tag">{{ .Name }}</a>{{ end }}
       </div>
       {{- end }}
     </article>
