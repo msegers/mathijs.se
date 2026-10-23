@@ -1,5 +1,11 @@
 schemaVersion: '2.0.0'
 fileExistenceTests:
-  - name: 'check site files'
-    path: '/opt/HugoApp/index.html'
+  - name: 'check site index'
+    path: '/usr/share/nginx/html/index.html'
+    shouldExist: true
+  - name: 'check blog index'
+    path: '/usr/share/nginx/html/blog/index.html'
+    shouldExist: true
+  - name: 'check stylesheet'
+    path: '/usr/share/nginx/html/css/main.css'
     shouldExist: true

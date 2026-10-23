@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>{{ .Title }}</title>
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="alternate" type="application/rss+xml" href="/index.xml" title="{{ .Site.Title }}">
+</head>
+<body>
+  <header>
+    <a href="/"><h1>Mathijs.se<span>gers</span></h1></a>
+    <nav>
+      <ul>
+        {{- range .Nav }}
+        <li><a href="{{ .URL }}"{{ if .Class }} class="{{ .Class }}" aria-current="{{ .Current }}"{{ end }}>{{ .Name }}</a></li>
+        {{- end }}
+      </ul>
+    </nav>
+  </header>
+  <main>
+    {{ template "main" . }}
+  </main>
+  <footer>
+    <section>
+      <p>Copy, yeah right {{ .Year }}.</p>
+    </section>
+  </footer>
+</body>
+</html>

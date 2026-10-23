@@ -1,0 +1,29 @@
+{{ define "main" }}
+  <h1>{{ .Page.Title }}</h1>
+  <section>
+    {{ .Body }}
+  </section>
+
+  <section class="articles">
+    {{- range .Cards }}
+    <article>
+      <div{{ if not .HasImage }} class="no-image"{{ end }}>
+        <img src="{{ .ImageURL }}" alt="{{ .ImageAlt }}" />
+      </div>
+
+      {{- if .Tags }}
+      <div class="tag-list">
+        {{- range .Tags }}
+        <a href="{{ .URL }}" class="tag">{{ .Name }}</a>
+        {{- end }}
+      </div>
+      {{- end }}
+
+      <time datetime="{{ .DateISO }}">{{ .DateHuman }}</time>
+      <h2>{{ .Title }}</h2>
+      {{ .Summary }}
+      <a href="{{ .URL }}">Read more</a>
+    </article>
+    {{- end }}
+  </section>
+{{ end }}

@@ -1,0 +1,19 @@
+{{ define "main" }}
+  <h1>{{ .Page.Title }}</h1>
+  {{- if .Page.HasDate }}
+  <time datetime="{{ .Page.DateISO }}">{{ .Page.DateHuman }}</time>
+  {{- end }}
+
+  <section>
+    {{ .Body }}
+
+    {{- if .TagLinks }}
+    <h3 class="tag-header">Related Tags</h3>
+    <div class="tag-list">
+      {{- range .TagLinks }}
+      <a href="{{ .URL }}" class="tag">{{ .Name }}</a>
+      {{- end }}
+    </div>
+    {{- end }}
+  </section>
+{{ end }}

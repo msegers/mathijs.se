@@ -1,0 +1,9 @@
+{
+  "title": "Mathijs Segers",
+  "baseURL": "https://mathijs.se/",
+  "languageCode": "en-us",
+  "menu": [
+    { "name": "About", "url": "/about/" },
+    { "name": "Blog", "url": "/blog/" }
+  ]
+}

@@ -1,19 +1,20 @@
-# Stage 1
-FROM alpine:latest AS build
+# syntax=docker/dockerfile:1
 
-WORKDIR /opt/HugoApp
+# The site generator only needs to run on the build machine. Building it for
+# $BUILDPLATFORM lets a multi-arch image build without ARM emulation.
+FROM --platform=$BUILDPLATFORM golang:alpine AS build
 
-# Copy Hugo config into the container Workdir.
+WORKDIR /src
+
+COPY go.mod go.sum ./
+RUN go mod download
+
 COPY . .
+RUN CGO_ENABLED=0 go build -trimpath -ldflags="-s -w" -o /tmp/site .
+RUN /tmp/site
 
-# Stage 2
-FROM nginx:1.25-alpine AS create
+FROM nginx:alpine
 
-# Set workdir to the NGINX default dir.
-WORKDIR /usr/share/nginx/html
+COPY --from=build /src/public /usr/share/nginx/html
 
-# Copy HTML from previous build into the Workdir.
-COPY --from=build /opt/HugoApp/public .
-
-# Expose port 80
 EXPOSE 80/tcp

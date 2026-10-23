@@ -2,7 +2,7 @@
 title = 'print("Hello World")'
 date = 2025-06-13T09:00:00+01:00
 tags = ['learning', 'linux']
-image = { src = 'hello-world-vim.png', alt= 'A screenshot of my NeoVim editor in Kitty terminal'}
+image = { src = 'hello-world-vim.png', thumb = 'hello-world-vim-thumb.png', alt = 'A screenshot of my NeoVim editor in Kitty terminal' }
 summary = "Why I started a blog."
 +++
 
