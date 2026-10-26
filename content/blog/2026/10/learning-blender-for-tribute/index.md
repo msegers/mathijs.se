@@ -4,6 +4,7 @@ date = '2026-10-25'
 draft = true
 tags = ['learning', 'development']
 summary = 'Notes from learning Blender to model and rig the first character for my indie game, Tribute.'
+image = { src = 'image.png', thumb = 'thumb.png', alt = 'A low-poly Tribute character in Blender with reference images behind it' }
 +++
 
 Working notes for a post about learning Blender while making the first character for Tribute. Not a tutorial.
