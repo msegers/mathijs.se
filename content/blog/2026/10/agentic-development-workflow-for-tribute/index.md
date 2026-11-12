@@ -1,23 +1,70 @@
 +++
-title = 'Building an agentic development workflow for Tribute'
+title = 'Building an agentic development workflow for "Tribute"'
 date = '2026-10-26T10:30:16+01:00'
 draft = true
 tags = ['ai', 'development', 'rust']
-summary = 'Working notes on using coding agents to plan, implement, review and integrate changes to Tribute, a Rust game prototype.'
+summary = 'Working notes on using coding agents to plan, implement, review and integrate changes to "Tribute", a Rust game.'
 image = { src = 'image.png', thumb = 'thumb.png', alt = "Tribute's native client showing a green hexagonal map with coloured faction and activity markers and a status overlay." }
 +++
 
-*Working notes for a post about delegating bounded engineering tasks to coding agents while building Tribute. Not a finished article, and not a claim that agents replaced the programmer.*
+Just to start off Tribute is just a name I picked for the repo/namespaces. It isn't anything I have though a lot about or care much about; I just asked AI to suggest me some short project names and I got fed up of iterating and just picked one, it will likely not match what I'm trying to build.
+I've always wanted to experiment with building a game and I can pour some of the ideas I have into shape here, the goal for me is not to release a polished game, but to play with a little bit of game development and agentic workflows. If the game ever releases that'd be great, but knowing how quick I am in ditching projects...?
 
-Tribute is a Rust game prototype: a headless foraging simulation, a CLI runner, and an optional native client built with Bevy. It has enough interconnected systems to make a useful testbed for a development workflow, without pretending that a small indie project is the same as a large production codebase.
-
-These notes describe the repository as I found it around 2026-10-26. I've tried to separate what is implemented from what is still an experiment, a policy, or an open question.
+That said Tribute is a game written in Rust, primarily by agents. The projects uses Bevy for the graphical layer.
+At time of writing it is a very lean Civilization simulator where factions need to gather food/water and resources to survive and expand.
+In this article I just want to highlight the workflows a little, and issues I encounter.
 
 ![Tribute's native client showing a green hexagonal map with coloured faction and activity markers and a status overlay.](image.png)
 
-*The optional native client, showing the simulation's hex map, faction/activity markers and debug status panel. This is the kind of change the workflow is meant to deliver.*
+## Why am I experimenting with agentic development?
 
-[TODO: add a short personal opening — what prompted the experiment, what the first attempts looked like, and what I expected versus what actually happened.]
+Agentic development promises rapid development (10x or 100x has been casually thrown around in the past).
+The game I would like to create is ambitious in scope. It has individual people, inventories, tasks, survival mechanics, player interaction, construction, resource management and I can make up a lot of other features. To me without much experience in game development, this sounds like a multi year project.
+
+My thoughts were that if agentic workflows deliver as much as they promise, I'd be able to get quite far quick, at least with logic in mind.
+
+## What is an agentic workflow
+
+I think a lot of the terminology is quite new, and sometimes fuzzy and can be small or large, so to me the flow would be as follows (this is what I currently have setup).
+Certainly there will be many who have different thoughts, but this is what it means to me, I'll start with my current setup.
+
+There's a repository of tasks, either refined or not (currently this lives in markdown files in my repo).
+There's separate agents with separate roles:
+- Coordinator: Helps with refinement and manages sub agents
+- Worker: Does all the actual development/implementation and test implementations
+- Reviewer: Does review loops when development is completed
+
+[TODO: this would work better in a flowchart, also verify who runs the tests]
+
+Then the workflow would be as follows:
+
+### Step 1. Refinement
+Handled by the Coordinator agent, the Coordinator looks at the current tasks and picks up the next eligible one; (keeping blocked items in mind).
+The Coordinator analyses what is there and if there's any tickets that touch on similar concepts. When things are not defined clearly yet it comes up with suggestions/choices/questions to the human. The Human answers and the Coordinator continues until the tasks is fully refined. 
+Decisions here can be both mechanics and technical; how do we render things, how much water does a person drink per day, what is a day, etc.
+
+### Step 2. Implementation
+The Coordinator coordinates the entire process, in this step it will spin up a Worker sub agent.
+The Worker will start with implementing the rust code and unit tests.
+Once completed it will notify the Coordinator.
+
+## Step 3. Reviewing
+The Coordinator spins up a reviewer Agent with minimal context, this agent will review the code for matches with design
+
+- Coordinator picks up a ticket, checks if the task is clear, do we need any technical decicions or mechanics to be fleshed out more, what are the parameters etc. This loops with the human to verify until the tasks is ready for work.
+- The Coordinator will spin up a worker sub-agent to implement the work, when completed it will spin up an agent to do a review loop. This includes tests, any feedback will be handled by the worker, unless it needs to be raised to the human. After this step a PR should be created.
+- once completed the human needs to review the PR and verify, task gets marked completed. Human merges PR.
+
+This can then be done until there's no more tasks to refine; I frequently have a short refinement session with the coordinator to create more tickets, this often naturally happens when refining a tasks that creates more relevant additions.
+
+Some thoughts on enhancement here. 
+It would be possible to create some more steps, besides refining a task it could be good to create some specification files; or constantly update design documents; I chose not to because at it's current state it can sometimes already burn tokens rather quickly, I've been refining the process on the go; trying to make things more efficient.
+
+Currently the workflow still requires quite some handholding, we could speed things up if there's different workflows e.g.:
+- Just have the human create tasks and refine them well
+- Agents handle the entire workflow without human interaction, can run in parralel.
+
+
 
 ## 1. Why experiment with agentic development?
 
